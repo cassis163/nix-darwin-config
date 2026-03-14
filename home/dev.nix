@@ -20,4 +20,8 @@
       background-opacity = "0.95";
     };
   };
+
+  programs.starship = {
+    enable = true;
+  };
 }
