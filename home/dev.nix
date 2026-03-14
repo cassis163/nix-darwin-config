@@ -24,4 +24,20 @@
   programs.starship = {
     enable = true;
   };
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      ll = "ls -l";
+      switch = "sudo darwin-rebuild switch";
+    };
+
+    initContent = ''
+eval "$(starship init zsh)"
+    '';
+  };
 }
