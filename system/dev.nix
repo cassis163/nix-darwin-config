@@ -1,12 +1,12 @@
 {pkgs-unstable, ...}: {
   environment.systemPackages = with pkgs-unstable; [
     # Nix
-    nil # LSP
-    alejandra # Formatter
-    devenv
+    nil         # LSP
+    alejandra   # Formatter
+    devenv      # Dev environment
 
     # AI
-    opencode
+    opencode    # AI coder
   ];
 
   programs.direnv = {
