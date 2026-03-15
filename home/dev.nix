@@ -43,11 +43,15 @@ eval "$(starship init zsh)"
 
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
-      yzhang.markdown-all-in-one
-      jnoortheen.nix-ide
-      rust-lang.rust-analyzer
-    ];
+    profiles = {
+      "Rust" = {
+        extensions = with pkgs.vscode-extensions; [
+          vscodevim.vim
+          yzhang.markdown-all-in-one
+          jnoortheen.nix-ide
+          rust-lang.rust-analyzer
+        ];
+      };
+    };
   };
 }

@@ -1,10 +1,26 @@
-{ pkgs, ... }: {
-  programs.brave = {
+{ pkgs, ... }:
+
+{
+  programs.firefox = {
     enable = true;
-    extensions = [
-      { id = "epcnnfbjfcgphgdmggkamkmgojdagdnn"; } # ublock origin
-      { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
-      { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
-    ];
+
+    policies = {
+      ExtensionSettings = {
+        "uBlock0@raymondhill.net" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+        };
+
+        "addon@darkreader.org" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
+        };
+
+        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+        };
+      };
+    };
   };
 }
