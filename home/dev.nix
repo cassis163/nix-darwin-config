@@ -1,4 +1,25 @@
-{ pkgs, ... }: {
+{pkgs, ...}: let
+  commonVscodeSettings = {
+    "files.autoSave" = "afterDelay";
+
+    "nix.enableLanguageServer" = true;
+    "nix.formatterPath" = "alejandra";
+    "nix.serverPath" = "nil";
+    "nix.serverSettings" = {
+      "nil" = {
+        "formatting" = {
+          "command" = ["alejandra"];
+        };
+      };
+    };
+  };
+
+  commonVscodeExtensions = with pkgs.vscode-extensions; [
+    zainchen.json
+    jnoortheen.nix-ide
+    yzhang.markdown-all-in-one
+  ];
+in {
   programs.git = {
     enable = true;
     settings = {
@@ -37,20 +58,22 @@
     };
 
     initContent = ''
-eval "$(starship init zsh)"
+      eval "$(starship init zsh)"
     '';
   };
 
   programs.vscode = {
     enable = true;
     profiles = {
+      "Default" = {
+        extensions = commonVscodeExtensions;
+        userSettings = commonVscodeSettings;
+      };
       "Rust" = {
-        extensions = with pkgs.vscode-extensions; [
-          vscodevim.vim
-          yzhang.markdown-all-in-one
-          jnoortheen.nix-ide
+        extensions = commonVscodeExtensions ++ (with pkgs.vscode-extensions; [
           rust-lang.rust-analyzer
-        ];
+        ]);
+        userSettings = commonVscodeSettings;
       };
     };
   };
