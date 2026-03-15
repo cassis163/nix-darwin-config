@@ -2,6 +2,9 @@
   commonVscodeSettings = {
     "files.autoSave" = "afterDelay";
 
+    "chat.agent.enabled" = false;
+    "chat.disableAIFeatures" = true;
+
     "nix.enableLanguageServer" = true;
     "nix.formatterPath" = "alejandra";
     "nix.serverPath" = "nil";
