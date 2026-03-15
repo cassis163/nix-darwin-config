@@ -1,8 +1,9 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "cassis163's nix-darwin system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,10 +14,19 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-darwin, ... }: {
+  outputs = {
+    self,
+    nixpkgs-unstable,
+    home-manager,
+    nix-darwin,
+    ...
+  }: {
     darwinConfigurations = {
       MBP-CA = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self; };
+        specialArgs = {
+          inherit self;
+          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
+        };
 
         system = "aarch64-darwin";
         modules = [
