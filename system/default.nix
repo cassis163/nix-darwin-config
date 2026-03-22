@@ -4,6 +4,5 @@
     ./monitoring.nix
     ./dev.nix
     ./vm.nix
-    ./flashing.nix
   ];
 }

@@ -5,6 +5,9 @@
     alejandra   # Formatter
     devenv      # Dev environment
 
+    # DevOps
+    nixos-anywhere
+
     # AI
     opencode    # AI coder
   ];
