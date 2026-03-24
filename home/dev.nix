@@ -81,6 +81,8 @@ in {
       "C++" = {
         extensions = commonVscodeExtensions ++ (with pkgs.vscode-extensions; [
           ms-vscode.cpptools-extension-pack
+          ms-vscode.cpptools
+          ms-vscode.cmake-tools
         ]);
         userSettings = commonVscodeSettings;
       };
