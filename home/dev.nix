@@ -18,7 +18,7 @@
   };
 
   commonVscodeExtensions = with pkgs.vscode-extensions; [
-    zainchen.json
+    editorconfig.editorconfig
     jnoortheen.nix-ide
     yzhang.markdown-all-in-one
   ];
@@ -75,6 +75,12 @@ in {
       "Rust" = {
         extensions = commonVscodeExtensions ++ (with pkgs.vscode-extensions; [
           rust-lang.rust-analyzer
+        ]);
+        userSettings = commonVscodeSettings;
+      };
+      "C++" = {
+        extensions = commonVscodeExtensions ++ (with pkgs.vscode-extensions; [
+          ms-vscode.cpptools-extension-pack
         ]);
         userSettings = commonVscodeSettings;
       };
