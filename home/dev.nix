@@ -15,6 +15,8 @@
         };
       };
     };
+
+    "cmake.cmakePath" = "${pkgs.cmake}/bin/cmake";
   };
 
   commonVscodeExtensions = with pkgs.vscode-extensions; [
@@ -65,6 +67,8 @@ in {
     '';
   };
 
+  home.packages = with pkgs; [cmake];
+
   programs.vscode = {
     enable = true;
     profiles = {
@@ -73,17 +77,21 @@ in {
         userSettings = commonVscodeSettings;
       };
       "Rust" = {
-        extensions = commonVscodeExtensions ++ (with pkgs.vscode-extensions; [
-          rust-lang.rust-analyzer
-        ]);
+        extensions =
+          commonVscodeExtensions
+          ++ (with pkgs.vscode-extensions; [
+            rust-lang.rust-analyzer
+          ]);
         userSettings = commonVscodeSettings;
       };
       "C++" = {
-        extensions = commonVscodeExtensions ++ (with pkgs.vscode-extensions; [
-          ms-vscode.cpptools-extension-pack
-          ms-vscode.cpptools
-          ms-vscode.cmake-tools
-        ]);
+        extensions =
+          commonVscodeExtensions
+          ++ (with pkgs.vscode-extensions; [
+            ms-vscode.cpptools-extension-pack
+            ms-vscode.cpptools
+            ms-vscode.cmake-tools
+          ]);
         userSettings = commonVscodeSettings;
       };
     };
