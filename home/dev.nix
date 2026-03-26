@@ -20,6 +20,7 @@
   };
 
   commonVscodeExtensions = with pkgs.vscode-extensions; [
+    ms-vscode.makefile-tools
     editorconfig.editorconfig
     jnoortheen.nix-ide
     yzhang.markdown-all-in-one
@@ -67,7 +68,7 @@ in {
     '';
   };
 
-  home.packages = with pkgs; [cmake];
+  home.packages = with pkgs; [cmake ninja];
 
   programs.vscode = {
     enable = true;
